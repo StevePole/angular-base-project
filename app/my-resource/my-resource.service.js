@@ -14,12 +14,15 @@
         self.save = save;
         
         function get(id) {
-            var deferred = $q.defer();
-            deferred.resolve({
-                id: id,
-                name: "Hello World!"
+            return self.list().then(function(resources) {
+                var val = resources[0];
+                angular.forEach(resources, function(resource) {
+                    if (id === resource.id) {
+                        val = resource;
+                    }
+                });
+                return val;
             });
-            return deferred.promise;
         };
         function list() {
             var deferred = $q.defer();

@@ -19,17 +19,17 @@ angular
 
 function config($routeProvider) {
     $routeProvider
-        .when('/my-resource', {
-            templateUrl: 'app/my-resource/my-resource.html',
-            controller: 'MyResourceController',
+        .when('/my-resources', {
+            templateUrl: 'app/my-resource/my-resources.html',
+            controller: 'MyResourcesController',
             controllerAs: 'vm'
         })
-        .when('/my-resource/:id', {
+        .when('/my-resources/:id', {
             templateUrl: 'app/my-resource/my-resource.html',
             controller: 'MyResourceController',
             controllerAs: 'vm'
         }).
         otherwise({
-          redirectTo: '/my-resource'
+          redirectTo: '/my-resources'
         });
 }
