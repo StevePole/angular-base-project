@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/StevePole/angular-base-project/issues"
   },
-  "homepage": "https://github.com/StevePole/angular-base-project"
+  "homepage": "https://github.com/StevePole/angular-base-project",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
 }
