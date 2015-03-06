@@ -1,0 +1,24 @@
+{
+  "name": "angular-base-project",
+  "version": "0.0.1",
+  "description": "Base project for AngularJS with common dependencies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StevePole/angular-base-project.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "Bootstrap",
+    "Seed"
+  ],
+  "author": "Steve Pole <stephenpole@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StevePole/angular-base-project/issues"
+  },
+  "homepage": "https://github.com/StevePole/angular-base-project"
+}
