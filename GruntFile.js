@@ -4,11 +4,25 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                mangle: false,
+                beautify: true
             },
-            build: {
-                src: 'src/<%= pkg.name %>.js',
-                dest: 'build/<%= pkg.name %>.min.js'
+            controllers: {
+                src: ['app/**/*.controller.js'],
+                dest: 'app/controllers.min.js'
+            },
+            services: {
+                src: ['app/**/*.service.js'],
+                dest: 'app/services.min.js'
+            },
+            filters: {
+                src: ['app/**/*.filter.js'],
+                dest: 'app/filters.min.js'
+            },
+            directives: {
+                src: ['app/**/*.directive.js'],
+                dest: 'app/directives.min.js'
             }
         }
     });

@@ -5,7 +5,7 @@
         .module('my-application.controllers')
         .controller('MyResourceController', MyResourceController);
 
-    MyResourceController.$inject = ['MyResourceservice'];
+    MyResourceController.$inject = ['MyResourceService'];
 
     function MyResourceController(MyResourceService) {
         var vm = this;
@@ -14,7 +14,7 @@
         vm.resource = {};
         
         function init() {
-            MyResourceService.get(id)
+            MyResourceService.get(1)
                 .then(function(resource) {
                     vm.resource = resource;
                     return resource;
