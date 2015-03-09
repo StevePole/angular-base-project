@@ -5,7 +5,7 @@ module.exports = function(grunt) {
         watch: {
             controllers: {
                 files: ['app/**/*.controller.js'],
-                tasks: ['uglify:controllers']
+                tasks: ['uglify:controllers', 'jshint']
             },
             services: {
                 files: ['app/**/*.service.js'],
@@ -42,13 +42,36 @@ module.exports = function(grunt) {
                 src: ['app/**/*.directive.js'],
                 dest: 'app/directives.min.js'
             }
+        },
+        jshint: {
+            options: {
+                curly: true,
+                eqeqeq: true,
+                eqnull: true,
+                browser: true,
+                globals: {
+                    jQuery: true,
+					console: true
+				},
+				'-W099': true, // allow mix tabs and spaces
+				'-W014': true, // allow ++
+				'-W043': true, // parseInt without radix parameter
+				'-W065': true  // allow \n for line endings
+            },
+            files: [
+                'app/**/*.controller.js',
+                'app/**/*.service.js',
+                'app/**/*.filter.js',
+                'app/**/*.directive.js'
+            ]
         }
     });
 
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('default', ['uglify', 'jshint', 'watch']);
 };
