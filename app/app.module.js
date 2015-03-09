@@ -6,6 +6,7 @@ angular.module('my-application.filters', []);
 
 angular.module('my-application', [
     'ngRoute',
+    'ngAnimate',
     'my-application.controllers',
     'my-application.directives',
     'my-application.filters',
