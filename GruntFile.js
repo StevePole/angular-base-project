@@ -64,6 +64,17 @@ module.exports = function(grunt) {
                 'app/**/*.filter.js',
                 'app/**/*.directive.js'
             ]
+        },
+        karma: {
+            options: {
+                background: true,
+                browsers: ['PhantomJS']
+            },
+            continuous: {
+                singleRun: true,
+                browsers: ['PhantomJS']
+            },
+            files: ['app/**/*.*.spec.js']
         }
     });
 
@@ -71,7 +82,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-karma');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'jshint', 'watch']);
+    grunt.registerTask('default', ['jshint', 'karma', 'uglify', 'watch']);
 };
