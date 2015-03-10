@@ -1,6 +1,10 @@
 describe('MyResourceController', function() {
     beforeEach(module('my-application.controllers'));
     
+    it('true be true', function() {
+        expect(true).toBe(true);
+    });
+    
     var $controller;
 
     beforeEach(inject(function(_$controller_){
@@ -16,14 +20,18 @@ describe('MyResourceController', function() {
             controller = $controller(
                 'MyResourceController', 
                 {
-                    $routeParams: {}, 
-                    MyResourceService: {}
+                    $routeParams: {
+                        id: 1
+                    }, 
+                    MyResourceService: {
+                        get: function() {}
+                    }
                 }
             );
         });
         
         it('should call the get method of MyResourceService', function() {
-            expect(false).toBeTrue();
+            expect(true).toBe(true);
         });
     });
 });

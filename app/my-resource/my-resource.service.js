@@ -23,7 +23,7 @@
                 });
                 return val;
             });
-        };
+        }
         function list() {
             var deferred = $q.defer();
             deferred.resolve([{
@@ -34,12 +34,12 @@
                 name: "Is anybody out there?"
             }]);
             return deferred.promise;
-        };
+        }
         function save(resource) {
             console.log("Saving resource...");
             var deferred = $q.defer();
             deferred.resolve(resource);
             return deferred.promise;
-        };
+        }
     }
 })();
