@@ -7,7 +7,9 @@ module.exports = function(config) {
         files : [
             // include relevant Angular files and libs
             'bower_components/angular/angular.js',
+            'bower_components/angular-route/angular-route.js',
             'bower_components/angular-mocks/angular-mocks.js',
+            'bower_components/angular-animate/angular-animate.js',
 
             // include js files
             'app/app.module.js',
@@ -15,6 +17,7 @@ module.exports = function(config) {
             'app/**/*.directive.js',
             'app/**/*.filter.js',
             'app/**/*.service.js',
+            'app/**/*.mock.js',
 
             // include unit test specs
             'app/**/*.spec.js'

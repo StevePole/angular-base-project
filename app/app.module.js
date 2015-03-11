@@ -3,6 +3,7 @@ angular.module('my-application.controllers', []);
 angular.module('my-application.services', []);
 angular.module('my-application.directives', []);
 angular.module('my-application.filters', []);
+angular.module('my-application.mocks', []);
 
 angular.module('my-application', [
     'ngRoute',

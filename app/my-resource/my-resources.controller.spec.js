@@ -8,48 +8,44 @@ describe('Controller: MyResourceController', function() {
         module('my-application.services');
         module('my-application.mocks');
         
-        // Override objects passed by dependency injection $provider
-        // (this must be done before we start using inject)
-        module('my-application', function($provide) {
-            $provide.value('$routeParams', {id: 1});
-            
-            // Ideally we would override services with our pre-written mocks
-            // However, we cannot use inject to get the mock until later
-        });
-        
         // underscores in service names are ignored, they let us use the 
         // original name for local variables.
         inject(function($controller, _MyResourceServiceMock_, _$rootScope_) {
-            // Retain a reference to the rootScope so we can trigger a digest 
-            // cycle to resolve promises.
+            // Retain rootScope to trigger digest and resolve promises.
             $rootScope = _$rootScope_;
             
             // Retain a reference to the mock service so we can spy on it later
             MyResourceService = _MyResourceServiceMock_;
             
-            // Use the controller service to instantiate our controller
-            // DI works as normal, but we must pass our mock service explicitly
-            controller = $controller('MyResourceController', {
+            // Use the controller service to instantiate our controller, pass mock
+            controller = $controller('MyResourcesController', {
                 MyResourceService: _MyResourceServiceMock_
             });
         });
     });
 
     describe('init()', function() {
-        it("should call the resource service and load a resource", function() {
+        it("should call the resource service and list the resources", function() {
             // spyOn replaces the method, callThrough returns the original response
-            spyOn(MyResourceService, 'get').and.callThrough();
+            spyOn(MyResourceService, 'list').and.callThrough();
             
             controller.init();
             
-            expect(MyResourceService.get).toHaveBeenCalled();
-            expect(MyResourceService.get).toHaveBeenCalledWith(1);
+            expect(MyResourceService.list).toHaveBeenCalled();
             
             // Force a digest cycle on the rootScope to resolve promises.
             $rootScope.$apply();
             
-            expect(controller.resource.id).toBe(1);
-            expect(controller.resource.name).toBe("Mock!");
+            expect(controller.resources).toBeDefined();
+            expect(controller.resources.length).toBe(2);
+            
+            var resource = controller.resources[0];
+            expect(resource.id).toBe(1);
+            expect(resource.name).toBe("Mock!");
+            
+            resource = controller.resources[1];
+            expect(resource.id).toBe(2);
+            expect(resource.name).toBe("Another mock?");
         });
     });
 });

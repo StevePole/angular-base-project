@@ -14,7 +14,9 @@
         vm.resource = {};
         
         function init() {
-            MyResourceService.get(parseInt($routeParams.id))
+            var id = parseInt($routeParams.id);
+            
+            MyResourceService.get(id)
                 .then(function(resource) {
                     vm.resource = resource;
                     return resource;
