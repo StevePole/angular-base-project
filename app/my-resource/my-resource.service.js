@@ -5,9 +5,9 @@
         .module('my-application.services')
         .service('MyResourceService', MyResourceService);
 
-    MyResourceService.$inject = ['$q'];
+    MyResourceService.$inject = ['$q', '$http'];
 
-    function MyResourceService($q) {
+    function MyResourceService($q, $http) {
         var self = this;
         self.get = get;
         self.list = list;
@@ -15,30 +15,23 @@
         
         function get(id) {
             return self.list().then(function(resources) {
-                var val = resources[0];
-                angular.forEach(resources, function(resource) {
-                    if (id === resource.id) {
-                        val = resource;
+                var resource = resources[0];
+                angular.forEach(resources, function(resourceIter) {
+                    if (id === resourceIter.id) {
+                        resource = resourceIter;
                     }
                 });
-                return val;
+                return resource;
             });
         }
         function list() {
-            var deferred = $q.defer();
-            deferred.resolve([{
-                id: 1,
-                name: "Hello World!"
-            },{
-                id: 2,
-                name: "Is anybody out there?"
-            }]);
-            return deferred.promise;
+            return $http.get("app/json/my-resources.json").then(function(resources) {
+                return resources.data;
+            });
         }
         function save(resource) {
-            console.log("Saving resource...");
             var deferred = $q.defer();
-            deferred.resolve(resource);
+            deferred.resolve({data: resource});
             return deferred.promise;
         }
     }

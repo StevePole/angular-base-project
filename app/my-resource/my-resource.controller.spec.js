@@ -52,4 +52,21 @@ describe('Controller: MyResourceController', function() {
             expect(controller.resource.name).toBe("Mock!");
         });
     });
+    
+    describe('save()', function() {
+        it("should call the service and save a resource", function() {
+            // spyOn replaces the method, callThrough returns the original response
+            spyOn(MyResourceService, 'save').and.callThrough();
+            
+            controller.save();
+            
+            expect(MyResourceService.save).toHaveBeenCalled();
+            
+            // Force a digest cycle on the rootScope to resolve promises.
+            $rootScope.$apply();
+            
+            expect(controller.resource.id).toBe(1);
+            expect(controller.resource.name).toBe("Mock!");
+        });
+    });
 });

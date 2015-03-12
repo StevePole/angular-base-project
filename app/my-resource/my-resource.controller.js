@@ -18,13 +18,16 @@
             
             MyResourceService.get(id)
                 .then(function(resource) {
+                    console.log("log");
+                    console.log(resource);
                     vm.resource = resource;
                     return resource;
-                })
-                .catch(function(errors) {
-                    
                 });
+                //.catch(function(errors) {
+                //    var a = 1;
+                //});
         }
+        
         function save() {
             MyResourceService.save(vm.resource);
         }

@@ -17,9 +17,6 @@
                 .then(function(resources) {
                     vm.resources = resources;
                     return resources;
-                })
-                .catch(function(errors) {
-                    
                 });
         }
         
