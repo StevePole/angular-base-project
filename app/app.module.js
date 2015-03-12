@@ -32,6 +32,6 @@ function config($routeProvider) {
             controllerAs: 'vm'
         }).
         otherwise({
-          redirectTo: '/my-resources'
+            redirectTo: '/my-resources'
         });
 }

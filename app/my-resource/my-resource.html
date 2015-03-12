@@ -1,6 +1,46 @@
-<div ng-if="vm.resource.name">
-    <h1>Anyone there... {{vm.resource.name | myFilter}}</h1>
-    <my-directive></my-directive>
+<div>
+    <h1>Anyone there... 
+        <span ng-if="vm.resource.name">{{vm.resource.name | myFilter}}</span>
+    </h1>
     
-    <a href="#/my-resources" class="btn btn-success">Back</a>
+    <my-directive ng-model="vm.resource.name"></my-directive>
+    
+    <form class="form-horizontal" name="myResourceForm">
+        <div class="form-group" 
+            ng-class="{
+                'has-error': myResourceForm.name.$invalid,
+                'has-success': myResourceForm.name.$valid
+            }">
+            <label class="control-label col-sm-3">
+                Resource name
+            </label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control"
+                    name="name" required
+                    placeholder="Enter a name..."
+                    ng-pattern="/^[a-z\s]+$/"
+                    ng-model="vm.resource.name" />
+                <span class="glyphicon glyphicon-ok form-control-feedback"
+                    ng-if=" myResourceForm.name.$valid"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback"
+                    ng-if=" myResourceForm.name.$invalid"></span>
+                
+                <p class="help-block" ng-if="myResourceForm.name.$error.required">
+                    Resource name is required
+                </p>
+                <p class="help-block" ng-if="myResourceForm.name.$invalid">
+                    Invalid resource name, may only contain lower case 
+                    characters a to z and (space).
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <a href="#/my-resources" class="btn btn-default">Back</a>
+                <button class="btn btn-success" 
+                    ng-click="vm.save()"
+                    ng-disabled="myResourceForm.$invalid">Save</button>
+            </div>
+        </div>
+    </form>
 </div>

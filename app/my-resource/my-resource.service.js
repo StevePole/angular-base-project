@@ -30,6 +30,7 @@
             });
         }
         function save(resource) {
+            console.log("saving! " + resource.name);
             var deferred = $q.defer();
             deferred.resolve({data: resource});
             return deferred.promise;
