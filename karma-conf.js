@@ -35,11 +35,12 @@ module.exports = function(config) {
         browsers : ['PhantomJS'], // , 'Firefox', 'Chrome'
 
         // progress is the default reporter
-        reporters: ['progress'],
+        reporters: ['progress', 'coverage'],
 
         // map of preprocessors that is used mostly for plugins
         preprocessors: {
-
+            'app/**/*.controller.js': ['coverage'],
+            'app/**/*.service.js': ['coverage']
         },
 
         // list of karma plugins
@@ -48,7 +49,22 @@ module.exports = function(config) {
             //'karma-chrome-launcher',
             //'karma-firefox-launcher',
             'karma-jasmine',
-            'karma-phantomjs-launcher'
-        ]
+            'karma-phantomjs-launcher',
+            'karma-coverage'
+        ],
+        // add plugin settings
+        coverageReporter: {
+            reporters: [{
+                // type of file to output, text outputs to console
+                type : 'text',
+                dir: 'build/coverage/',
+                file: 'coverage.txt'
+            },{
+                // xml with line number information
+                type : 'cobertura',
+                dir: 'build/coverage/',
+                file: 'coverage.xml'
+            }]
+        }
     });
 };
