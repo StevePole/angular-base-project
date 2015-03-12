@@ -1,0 +1,13 @@
+{
+  "name": "angular-base-project",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "latest",
+    "angular-animate": "latest",
+    "angular-mocks": "latest",
+    "angular-route": "latest",
+    "animate.css": "latest",
+    "bootstrap": "latest"
+  },
+  "private": true
+}
