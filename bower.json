@@ -1,6 +1,8 @@
 {
   "name": "angular-base-project",
   "version": "0.0.1",
+  "componentsDirectory": "public/",
+  "directory" : "public/bower_components",
   "dependencies": {
     "angular": "latest",
     "angular-animate": "latest",

@@ -6,10 +6,10 @@ module.exports = function(config) {
         // files to include, ordered by dependencies
         files : [
             // include relevant Angular files and libs
-            'bower_components/angular/angular.js',
-            'bower_components/angular-route/angular-route.js',
-            'bower_components/angular-mocks/angular-mocks.js',
-            'bower_components/angular-animate/angular-animate.js',
+            'public/components/angular/angular.js',
+            'public/components/angular-route/angular-route.js',
+            'public/components/angular-mocks/angular-mocks.js',
+            'public/components/angular-animate/angular-animate.js',
 
             // include js files
             'app/app.module.js',

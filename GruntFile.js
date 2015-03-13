@@ -3,44 +3,67 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         watch: {
+            less: {
+                files: ['app/**/*.css', 'app/**/*.less'],
+                tasks: ['less:development', 'less:production']
+            },
             controllers: {
                 files: ['app/**/*.controller.js'],
                 tasks: ['uglify:controllers', 'jshint']
             },
             services: {
                 files: ['app/**/*.service.js'],
-                tasks: ['uglify:services']
+                tasks: ['uglify:services', 'jshint']
             },
             filters: {
                 files: ['app/**/*.filter.js'],
-                tasks: ['uglify:filters']
+                tasks: ['uglify:filters', 'jshint']
             },
             directives: {
                 files: ['app/**/*.directive.js'],
-                tasks: ['uglify:directives']
+                tasks: ['uglify:directives', 'jshint']
             }
         },
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-                mangle: true,
-                beautify: false
+                mangle: false,
+                beautify: true
             },
             controllers: {
                 src: ['app/**/*.controller.js'],
-                dest: 'app/controllers.min.js'
+                dest: 'public/js/controllers.min.js'
             },
             services: {
                 src: ['app/**/*.service.js'],
-                dest: 'app/services.min.js'
+                dest: 'public/js/services.min.js'
             },
             filters: {
                 src: ['app/**/*.filter.js'],
-                dest: 'app/filters.min.js'
+                dest: 'public/js/filters.min.js'
             },
             directives: {
                 src: ['app/**/*.directive.js'],
-                dest: 'app/directives.min.js'
+                dest: 'public/js/directives.min.js'
+            }
+        },
+        less: {
+            development: {
+                options: {
+                    paths: ["app"]
+                },
+                files: {
+                    "public/css/styles.css": ["app/**/*.css", "app/**/*.less"]
+                }
+            },
+            production: {
+                options: {
+                    paths: ["app"],
+                    compress: true
+                },
+                files: {
+                    "public/css/styles.min.css": ["app/**/*.css", "app/**/*.less"]
+                }
             }
         },
         jshint: {
@@ -79,8 +102,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'karma', 'uglify', 'watch']);
+    grunt.registerTask('default', ['jshint', 'karma', 'uglify', 'less', 'watch']);
 };

@@ -12,6 +12,7 @@
         vm.init = init;
         vm.save = save;
         vm.resource = {};
+        vm.single = true;
         
         function init() {
             var id = parseInt($routeParams.id);

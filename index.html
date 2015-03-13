@@ -6,26 +6,28 @@
         <meta name="viewport" 
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         
-        <script src="bower_components/angular/angular.min.js"></script>
-        <script src="bower_components/angular-route/angular-route.min.js"></script>
-        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="public/components/angular/angular.min.js"></script>
+        <script src="public/components/angular-route/angular-route.min.js"></script>
+        <script src="public/components/angular-animate/angular-animate.min.js"></script>
         
         <link type="text/css" rel="stylesheet"
-            href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+            href="public/components/bootstrap/dist/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet"
-            href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+            href="public/components/bootstrap/dist/css/bootstrap-theme.min.css" />
         <link type="text/css" rel="stylesheet" 
-            href="bower_components/animate.css/animate.min.css" />
+            href="public/components/animate.css/animate.min.css" />
         <link type="text/css" rel="stylesheet" 
-            href="app/styles/styles.css" />
+            href="public/css/styles.css" />
         
         <script src="app/app.module.js"></script>
-        <script src="app/controllers.min.js"></script>
-        <script src="app/services.min.js"></script>
-        <script src="app/filters.min.js"></script>
-        <script src="app/directives.min.js"></script>
+        <script src="public/js/controllers.min.js"></script>
+        <script src="public/js/services.min.js"></script>
+        <script src="public/js/filters.min.js"></script>
+        <script src="public/js/directives.min.js"></script>
     </head>
     <body>
-        <div class="container animated" ng-view></div>
+        <div class="container animated" 
+            ng-class="{'nested': vm.single}"
+            ng-view></div>
     </body>
 </html>

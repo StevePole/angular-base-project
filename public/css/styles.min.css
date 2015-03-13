@@ -1,0 +1,1 @@
+div[ng-view].ng-enter{-webkit-animation:fadeInRight .3s;-moz-animation:fadeInRight .3s;-o-animation:fadeInRight .3s;animation:fadeInRight .3s}div[ng-view].ng-leave{position:absolute;-webkit-animation:fadeOutLeft .3s;-moz-animation:fadeOutLeft .3s;-o-animation:fadeOutLeft .3s;animation:fadeOutLeft .3s}
