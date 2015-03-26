@@ -1,3 +1,8 @@
+.my-resource h1 {
+  font-size: 16px;
+  font-family: courier;
+}
+
 div[ng-view].ng-enter {
   -webkit-animation: fadeInRight 0.3s;
   -moz-animation: fadeInRight 0.3s;

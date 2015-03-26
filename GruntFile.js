@@ -22,6 +22,10 @@ module.exports = function(grunt) {
             directives: {
                 files: ['app/**/*.directive.js'],
                 tasks: ['uglify:directives', 'jshint']
+            },
+            modules: {
+                src: ['app/**/*.module.js'],
+                dest: 'public/js/modules.min.js'
             }
         },
         uglify: {
@@ -45,6 +49,10 @@ module.exports = function(grunt) {
             directives: {
                 src: ['app/**/*.directive.js'],
                 dest: 'public/js/directives.min.js'
+            },
+            modules: {
+                src: ['app/**/*.module.js'],
+                dest: 'public/js/modules.min.js'
             }
         },
         less: {
