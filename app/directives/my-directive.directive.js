@@ -11,12 +11,18 @@
             scope: {
                 model: "=ngModel"
             },
-            controller: function($scope) {
-                var vm = this;
-                vm.test = "Directive";
-            },
+            controller: [
+                '$scope', 
+                myDirectiveController
+            ],
             controllerAs: "vm",
+            bindToController: true,
             template: "<p>Rendered by {{vm.test}}</p>"
         };
+    }
+    
+    function myDirectiveController($scope) {
+        var vm = this;
+        vm.test = "Directive";
     }
 })();

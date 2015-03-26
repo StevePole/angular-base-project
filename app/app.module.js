@@ -14,24 +14,28 @@ angular.module('my-application', [
     'my-application.services'
 ]);
 
-// route-config.js
-angular
-    .module('my-application')
-    .config(config);
+(function() {
+    'use strict';
+    
+    // route-config.js
+    angular
+        .module('my-application')
+        .config(config);
 
-function config($routeProvider) {
-    $routeProvider
-        .when('/my-resources', {
-            templateUrl: 'app/my-resource/my-resources.html',
-            controller: 'MyResourcesController',
-            controllerAs: 'vm'
-        })
-        .when('/my-resources/:id', {
-            templateUrl: 'app/my-resource/my-resource.html',
-            controller: 'MyResourceController',
-            controllerAs: 'vm'
-        }).
-        otherwise({
-            redirectTo: '/my-resources'
-        });
-}
+    function config($routeProvider) {
+        $routeProvider
+            .when('/my-resources', {
+                templateUrl: 'app/my-resource/my-resources.html',
+                controller: 'MyResourcesController',
+                controllerAs: 'vm'
+            })
+            .when('/my-resources/:id', {
+                templateUrl: 'app/my-resource/my-resource.html',
+                controller: 'MyResourceController',
+                controllerAs: 'vm'
+            }).
+            otherwise({
+                redirectTo: '/my-resources'
+            });
+    }
+})();
