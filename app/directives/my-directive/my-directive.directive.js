@@ -17,7 +17,7 @@
             ],
             controllerAs: "vm",
             bindToController: true,
-            template: "<p>Rendered by {{vm.test}}</p>"
+            templateUrl: "../app/directives/my-directive/my-directive.html"
         };
     }
     

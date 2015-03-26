@@ -25,7 +25,7 @@
             });
         }
         function list() {
-            return $http.get("app/json/my-resources.json").then(function(resources) {
+            return $http.get("../app/json/my-resources.json").then(function(resources) {
                 return resources.data;
             });
         }

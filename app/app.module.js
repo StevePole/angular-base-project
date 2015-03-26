@@ -25,12 +25,12 @@ angular.module('my-application', [
     function config($routeProvider) {
         $routeProvider
             .when('/my-resources', {
-                templateUrl: 'app/my-resource/my-resources.html',
+                templateUrl: '../app/components/my-resources/my-resources.html',
                 controller: 'MyResourcesController',
                 controllerAs: 'vm'
             })
             .when('/my-resources/:id', {
-                templateUrl: 'app/my-resource/my-resource.html',
+                templateUrl: '../app/components/my-resource/my-resource.html',
                 controller: 'MyResourceController',
                 controllerAs: 'vm'
             }).
