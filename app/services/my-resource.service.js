@@ -5,9 +5,9 @@
         .module('my-application.services')
         .service('MyResourceService', MyResourceService);
 
-    MyResourceService.$inject = ['$q', '$http'];
+    MyResourceService.$inject = ['$q', '$http', '$timeout'];
 
-    function MyResourceService($q, $http) {
+    function MyResourceService($q, $http, $timeout) {
         var self = this;
         self.get = get;
         self.list = list;
@@ -25,14 +25,16 @@
             });
         }
         function list() {
-            return $http.get("../app/json/my-resources.json").then(function(resources) {
+            return $http.get("json/my-resources.json").then(function(resources) {
                 return resources.data;
             });
         }
         function save(resource) {
             console.log("saving! " + resource.name);
             var deferred = $q.defer();
-            deferred.resolve({data: resource});
+            $timeout(function() {
+                deferred.resolve({data: resource});
+            }, 2000);
             return deferred.promise;
         }
     }

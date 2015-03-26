@@ -2,7 +2,12 @@
   font-size: 16px;
   font-family: courier;
 }
+.my-resource .loading {
+  width: 16px;
+  height: 16px;
+}
 
+/* Generic styles not specific to one component */
 div[ng-view].ng-enter {
   -webkit-animation: fadeInRight 0.3s;
   -moz-animation: fadeInRight 0.3s;

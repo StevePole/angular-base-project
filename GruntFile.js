@@ -103,6 +103,22 @@ module.exports = function(grunt) {
             unit: {
                 singleRun: true
             }
+        },
+        copy: {
+            templates: {
+                expand: true, 
+                flatten: true,  // flattens results to a single level
+                src: ['app/**/*.html'], 
+                dest: 'public/templates/', 
+                filter: 'isFile'
+            },
+            json: {
+                expand: true, 
+                flatten: true,  // flattens results to a single level
+                src: ['app/**/*.json'], 
+                dest: 'public/json/', 
+                filter: 'isFile'
+            }
         }
     });
 
@@ -112,7 +128,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'karma', 'uglify', 'less', 'watch']);
+    grunt.registerTask('default', ['jshint', 'karma', 'copy', 'uglify', 'less', 'watch']);
 };

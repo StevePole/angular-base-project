@@ -25,7 +25,10 @@
         }
         
         function save() {
-            MyResourceService.save(vm.resource);
+            vm.loading = true;
+            MyResourceService.save(vm.resource).then(function() {
+                vm.loading = false;
+            });
         }
         
         init();

@@ -17,7 +17,7 @@
             ],
             controllerAs: "vm",
             bindToController: true,
-            templateUrl: "../app/directives/my-directive/my-directive.html"
+            templateUrl: "templates/my-directive.html"
         };
     }
     
