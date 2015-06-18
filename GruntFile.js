@@ -30,7 +30,7 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                //banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                 mangle: false,
                 beautify: true
             },
@@ -106,17 +106,17 @@ module.exports = function(grunt) {
         },
         copy: {
             templates: {
-                expand: true, 
+                expand: true,
                 flatten: true,  // flattens results to a single level
-                src: ['app/**/*.html'], 
-                dest: 'public/templates/', 
+                src: ['app/**/*.html'],
+                dest: 'public/templates/',
                 filter: 'isFile'
             },
             json: {
-                expand: true, 
+                expand: true,
                 flatten: true,  // flattens results to a single level
-                src: ['app/**/*.json'], 
-                dest: 'public/json/', 
+                src: ['app/**/*.json'],
+                dest: 'public/json/',
                 filter: 'isFile'
             }
         }
