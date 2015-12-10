@@ -24,7 +24,7 @@ module.exports = function(grunt) {
                 tasks: ['uglify:directives', 'jshint']
             },
             modules: {
-                src: ['app/**/*.module.js'],
+                files: ['app/**/*.module.js'],
                 dest: 'public/js/modules.min.js'
             }
         },
