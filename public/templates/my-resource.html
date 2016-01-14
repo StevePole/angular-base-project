@@ -1,22 +1,22 @@
 <div class="my-resource">
-    <h1>Anyone there... 
+    <h1>Anyone there...
         <span ng-if="vm.resource.name">{{vm.resource.name | myFilter}}</span>
     </h1>
-    
+
     <my-directive ng-model="vm.resource.name"></my-directive>
-    
+
     <form class="form-horizontal" name="myResourceForm">
-        <div class="form-group" 
+        <div class="form-group"
             ng-class="{
                 'has-error': myResourceForm.name.$invalid,
                 'has-success': myResourceForm.name.$valid
             }">
-            <label class="control-label col-sm-3">
+            <label class="control-label col-sm-3" for="name">
                 Resource name
             </label>
             <div class="col-sm-9">
                 <input type="text" class="form-control"
-                    name="name" required
+                    name="name" id="name" required
                     placeholder="Enter a name..."
                     ng-pattern="/^[a-z\s]+$/"
                     ng-model="vm.resource.name" />
@@ -24,12 +24,12 @@
                     ng-if=" myResourceForm.name.$valid"></span>
                 <span class="glyphicon glyphicon-remove form-control-feedback"
                     ng-if=" myResourceForm.name.$invalid"></span>
-                
+
                 <p class="help-block" ng-if="myResourceForm.name.$error.required">
                     Resource name is required
                 </p>
                 <p class="help-block" ng-if="myResourceForm.name.$invalid">
-                    Invalid resource name, may only contain lower case 
+                    Invalid resource name, may only contain lower case
                     characters a to z and (space).
                 </p>
             </div>
@@ -37,14 +37,14 @@
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9">
                 <a href="#/my-resources" class="btn btn-default">
-                    <img class="loading" src="images/spinner.gif" />
+                    <img class="loading" src="images/spinner.gif" alt="loading" />
                     Back
                 </a>
-                <button class="btn btn-success" 
+                <button class="btn btn-success"
                     ng-click="vm.save()"
                     ng-disabled="myResourceForm.$invalid || vm.loading">
-                    <i class="icon-ok" ng-if="!vm.loading"></i>
-                    <img class="loading" src="images/spinner.gif" ng-if="vm.loading" />
+                    <span class="icon-ok" ng-if="!vm.loading"></span>
+                    <img class="loading" src="images/spinner.gif" ng-if="vm.loading" alt="loading" />
                     Save
                 </button>
             </div>

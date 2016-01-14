@@ -28,6 +28,7 @@
     "grunt-contrib-less": "^1.0.0",
     "grunt-contrib-uglify": "^0.8.0",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-htmllint": "^0.2.7",
     "grunt-karma": "^0.10.1",
     "jasmine-core": "^2.2.0",
     "karma": "^0.12.31",

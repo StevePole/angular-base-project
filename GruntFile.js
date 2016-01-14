@@ -24,8 +24,8 @@ module.exports = function(grunt) {
                 tasks: ['uglify:directives', 'jshint']
             },
             modules: {
-                src: ['app/**/*.module.js'],
-                dest: 'public/js/modules.min.js'
+                files: ['app/**/*.module.js'],
+                tasks: ['uglify:directives', 'jshint']
             }
         },
         uglify: {
@@ -95,6 +95,15 @@ module.exports = function(grunt) {
                 'app/**/*.directive.js'
             ]
         },
+        htmllint: {
+            options: {
+                "attr-name-style": false,
+                "id-class-style": "dash"
+            },
+            files: [
+                'app/**/*.html',
+            ]
+        },
         karma: {
             options: {
                 configFile: 'karma-conf.js'
@@ -123,6 +132,7 @@ module.exports = function(grunt) {
 
     // Load plugins.
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-htmllint');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
@@ -130,5 +140,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'karma', 'copy', 'uglify', 'less', 'watch']);
+    grunt.registerTask('default', ['jshint', 'htmllint', 'karma', 'copy', 'uglify', 'less', 'watch']);
+
+    grunt.registerTask('build', ['jshint', 'htmllint', 'copy', 'uglify', 'less']);
 };

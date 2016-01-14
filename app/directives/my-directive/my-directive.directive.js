@@ -1,6 +1,6 @@
 (function() {
-    'use strict';
-    
+    //'use strict';
+
     angular
         .module('my-application.directives')
         .directive('myDirective', myDirective);
@@ -12,7 +12,6 @@
                 model: "=ngModel"
             },
             controller: [
-                '$scope', 
                 myDirectiveController
             ],
             controllerAs: "vm",
@@ -20,8 +19,8 @@
             templateUrl: "templates/my-directive.html"
         };
     }
-    
-    function myDirectiveController($scope) {
+
+    function myDirectiveController() {
         var vm = this;
         vm.test = "Directive";
     }
